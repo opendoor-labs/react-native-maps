@@ -159,6 +159,11 @@ const MapMarker = React.createClass({
     draggable: PropTypes.bool,
 
     /**
+     * If true, this marker is rendered above all markers that do not have this set.
+     */
+    showOnTop: PropTypes.bool,
+
+    /**
      * Callback that is called when the user presses on the marker
      */
     onPress: PropTypes.func,

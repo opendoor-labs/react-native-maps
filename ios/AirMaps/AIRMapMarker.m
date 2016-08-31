@@ -75,6 +75,7 @@
         }
 
         _pinView.draggable = self.draggable;
+        _pinView.layer.zPosition = self.showOnTop ? 1 : 0;
 
         // TODO(lmr): Looks like this API was introduces in iOS 8. We may want to handle differently for earlier
         // versions. Right now it's just leaving it with the default color. People needing the colors are free to
@@ -89,6 +90,7 @@
         // if it has a non-null image, it means we want to render a custom marker with the image.
         // In either case, we want to return the AIRMapMarker since it is both an MKAnnotation and an
         // MKAnnotationView all at the same time.
+        self.layer.zPosition = self.showOnTop ? 1 : 0;
         return self;
     }
 }
@@ -224,6 +226,13 @@
                                                                          self.image = image;
                                                                      });
                                                                  }];
+}
+
+- (void)setShowOnTop:(BOOL)showOnTop
+{
+    _showOnTop = showOnTop;
+    
+    self.layer.zPosition = showOnTop ? 1 : 0;
 }
 
 - (void)setPinColor:(UIColor *)pinColor
